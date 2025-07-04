@@ -1,6 +1,8 @@
 import { db } from "~/server/db";
 import { posts } from "~/server/db/schema";
 
+export const dynamic="force-dynamic" ;// Force dynamic rendering for this page
+
 const Mockurls = [
   "https://d5dzw8t48q.ufs.sh/f/JTJrt4GHPsydGhVxPFddAIiecuy5Xg3W1n4N7tpYsVvQRfxM",
   "https://d5dzw8t48q.ufs.sh/f/JTJrt4GHPsydVCsdPdqJZdckyFj3qPuoL5bBwEfrWG8x2HYn",
