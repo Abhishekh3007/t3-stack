@@ -1,9 +1,22 @@
-import Link from "next/link";
+const Mockurls = [
+  "https://d5dzw8t48q.ufs.sh/f/JTJrt4GHPsydGhVxPFddAIiecuy5Xg3W1n4N7tpYsVvQRfxM",
+  "https://d5dzw8t48q.ufs.sh/f/JTJrt4GHPsydVCsdPdqJZdckyFj3qPuoL5bBwEfrWG8x2HYn",
+];
+const Mockimages = Mockurls.map((url, index) => ({
+  id: index + 1,
+  url,
+}));
 
 export default function HomePage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-      Hello World!
+    <main className="">
+      <div className="flex flex-wrap">
+        {Mockimages.map((image) => (
+          <div key={image.id} className="w-1/2 p-4">
+            <img src={image.url} alt={`Image ${image.id}`} className="w-full h-auto rounded" />
+          </div>
+        ))}
+      </div>
     </main>
   );
 }
