@@ -1,8 +1,8 @@
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
-export function TopNav() {
+export default function TopNav() {
   return (
-    <div className="flex items-center justify-between p-4 text-white text-xl font-semibold border-b">
+    <nav className=" flex items-center justify-between p-4  text-white font-semibold">
       <div>Gallery</div>
        <div>
         <SignedOut>
@@ -13,6 +13,6 @@ export function TopNav() {
         </SignedIn>
        </div>
       
-    </div>
+    </nav>
   );
 }

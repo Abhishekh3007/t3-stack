@@ -1,5 +1,5 @@
 import "~/styles/globals.css";
-
+import TopNav from "./_components/TopNav";
 import { type Metadata } from "next";
 import { Geist } from "next/font/google";
 import {
@@ -32,6 +32,8 @@ export default function RootLayout({
       <body>
         
         <div className="w-full flex flex-col gap-4">
+          <TopNav />
+          
           First layout
           {children}
         </div>
