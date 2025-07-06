@@ -1,27 +1,34 @@
-/**
- * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially useful
- * for Docker builds.
- */
-import "./src/env.js";
+// next.config.mjs
+import { withSentryConfig } from "@sentry/nextjs";
 
 /** @type {import("next").NextConfig} */
-const config = {
-    images: {
-        remotePatterns: [
-            {
-                protocol: "https",
-                hostname:  "**.ufs.sh",
-            },
-        ],
-    },
-    typescript: {
-        ignoreBuildErrors: true, // Ignore TypeScript errors during build
-    },
-    eslint: {
-        ignoreDuringBuilds: true, // Ignore ESLint errors during build
-    },
-
-
+const coreconfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**.ufs.sh",
+      },
+    ],
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
+
+const sentryOptions = {
+  org: "kle-6h",
+  project: "javascript-nextjs",
+  silent: !process.env.CI,
+  widenClientFileUpload: true,
+  tunnelRoute: "/monitoring",
+  disableLogger: true,
+  automaticVercelMonitors: true,
+};
+
+const config = withSentryConfig(coreconfig, sentryOptions);
 
 export default config;

@@ -8,8 +8,8 @@
 - [x] Add authentication (w/clerk)
 - [x] Add image upload
 - [x] "Taint" (server only)
-- [] Use next/Img component
-- [] Error managment
+- [x] Use next/Img component
+- [x] Error managment
 - [] Routing/image page (parallel route)
 - [] Delete button (w/ Server Action)
 - [] Analytics(posthog)

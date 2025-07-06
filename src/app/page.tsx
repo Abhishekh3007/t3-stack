@@ -14,7 +14,14 @@ async function image() {
         
         {image.map((img) => (
           <div key={img.id} className="flex flex-col w-40 p-2">
-            <Image src={img.url} style={{ objectFit: "contain" }} alt={img.name} width={200} height={200} />
+             <Image
+            src={img.url}
+            alt={img.name}
+            width={192}
+            height={192}
+            className="rounded object-cover"
+            style={{ objectFit: "cover" }}
+          />
             <div className="text-center text-sm mt-2">{img.name}</div>
           </div>
         ))}
