@@ -3,9 +3,11 @@ import { db } from "~/server/db";
 import { images } from "~/server/db/schema";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 export const dynamic="force-dynamic" ;// Force dynamic rendering for this page
+import {getMyImages} from "~/server/db/queries";
+
 
 async function image() {
-  const image = await db.select().from(images);
+  const image= await getMyImages();
   return(
       <div className="flex flex-wrap">
         
