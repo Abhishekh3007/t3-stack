@@ -4,6 +4,7 @@ import { images } from "~/server/db/schema";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 export const dynamic="force-dynamic" ;// Force dynamic rendering for this page
 import {getMyImages} from "~/server/db/queries";
+import Image from "next/image";
 
 
 async function image() {
@@ -13,7 +14,7 @@ async function image() {
         
         {image.map((img) => (
           <div key={img.id} className="flex flex-col w-40 p-2">
-            <img src={img.url} alt={`Image ${img.id}`} />
+            <Image src={img.url} style={{ objectFit: "contain" }} alt={img.name} width={200} height={200} />
             <div className="text-center text-sm mt-2">{img.name}</div>
           </div>
         ))}
