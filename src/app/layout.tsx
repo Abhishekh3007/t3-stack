@@ -30,7 +30,10 @@ const geist = Geist({
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+  modal,
+}: Readonly<{ children: React.ReactNode;
+  modal: React.ReactNode;
+}>) {
   // function extractRouterConfig(ourFileRouter: any) {
   //   throw new Error("Function not implemented.");
   // }
@@ -56,6 +59,8 @@ export default function RootLayout({
         />
         
           {children}
+          {modal}
+          <div id="modal-root" />
         </div>
       </body>
     </html>
