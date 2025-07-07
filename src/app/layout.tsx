@@ -47,7 +47,7 @@ export default function RootLayout({
         
         <div className="w-full flex flex-col gap-4">
 
-          <TopNav />
+          
                 <NextSSRPlugin
           /**
            * The `extractRouterConfig` will extract **only** the route configs
@@ -57,8 +57,12 @@ export default function RootLayout({
            */
           routerConfig={extractRouterConfig(ourFileRouter)}
         />
-        
+        <div className="h-screen grid grid-[auto,1fr]">
+          <TopNav />
+          <main className="flex-1 overflow-y-auto bg-zinc-900 text-white">
           {children}
+          </main>
+          </div>
           {modal}
           <div id="modal-root" />
         </div>
