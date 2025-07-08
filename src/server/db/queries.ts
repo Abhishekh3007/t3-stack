@@ -1,10 +1,13 @@
 // src/server/db/queries.ts
 
 import "server-only";
-import { db } from "~/server/db"; // your local drizzle config
-import { images } from "~/server/db/schema";
 import { auth } from "@clerk/nextjs/server";
-import { eq } from "drizzle-orm";
+import { db } from "~/server/db"; // adjust to your actual DB instance
+import { images } from "~/server/db/schema"; // your Drizzle table schema
+import { and, eq } from "drizzle-orm";
+import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
+import analyticsServerClient from "./analytics" // adjust path
 export async function getMyImages() {
   const user = await auth();
   if (!user?.userId) {
@@ -36,4 +39,22 @@ export async function getImage(id: number) {
   }
 
   return image;
+}
+export  async function deleteImage(id: number) {
+  const user= await auth();
+  if (!user?.userId) {
+    throw new Error("Unauthorized");
+  }
+  await db.delete(images).where(
+    and(eq(images.id, id), eq(images.userId, user.userId))
+  );
+    analyticsServerClient.capture({
+    distinctId: user.userId,
+    event: "delete image",
+    properties: {
+      imageId: id,
+    },
+  });
+  
+  redirect("/");
 }
