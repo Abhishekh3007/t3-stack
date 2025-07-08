@@ -6,6 +6,8 @@ import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
 import { Toaster } from "sonner";
 
+import { PostHogProvider } from './_analytics/provider'
+
 import {
   ClerkProvider,
   SignInButton,
@@ -42,6 +44,7 @@ export default function RootLayout({
 
   return (
     <ClerkProvider>
+      <PostHogProvider>
     <html lang="en" className={`${geist.variable}`}>
      
       <body>
@@ -73,6 +76,7 @@ export default function RootLayout({
         </div>
       </body>
     </html>
+    </PostHogProvider>
     </ClerkProvider>
   );
 }

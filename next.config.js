@@ -17,7 +17,26 @@ const coreconfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+   async rewrites() {
+    return [
+      {
+        source: "/relay-ecBj/static/:path*",
+        destination: "https://us-assets.i.posthog.com/static/:path*",
+      },
+      {
+        source: "/relay-ecBj/:path*",
+        destination: "https://us.i.posthog.com/:path*",
+      },
+      {
+        source: "/relay-ecBj/flags",
+        destination: "https://us.i.posthog.com/flags",
+      },
+    ];
+  },
+  
+  
 };
+
 
 const sentryOptions = {
   org: "kle-6h",
