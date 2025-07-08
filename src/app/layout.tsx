@@ -4,6 +4,7 @@ import { type Metadata } from "next";
 import { Geist } from "next/font/google";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
+import { Toaster } from "sonner";
 
 import {
   ClerkProvider,
@@ -16,6 +17,7 @@ import {
 
 import "@uploadthing/react/styles.css";
 import { ourFileRouter } from "./api/uploadthing/core";
+
 
 export const metadata: Metadata = {
   title: "T3 Gallery",
@@ -63,8 +65,11 @@ export default function RootLayout({
           {children}
           </main>
           </div>
+          <Toaster />
           {modal}
+          
           <div id="modal-root" />
+          
         </div>
       </body>
     </html>
